@@ -186,23 +186,23 @@
 
 // print99Dan();
 
-// var num = window.prompt("숫자를 입력해주세요.");
-// var sum = Number(num)
+var num = window.prompt("숫자를 입력해주세요.");
+var sum = Number(num)
 
-// while(num !== null){
-//     num = window.prompt("숫자를 입력해주세요.");
-//     if(num !== null){
-//         sum += Number(num);
-//     }else
-//         break
+while(num !== null){
+    num = window.prompt("숫자를 입력해주세요.");
+    if(num !== null){
+        sum += Number(num);
+    }else
+        break
     
-// }
-// alert(sum);
-
-var student = {
-    name: '형준',
-    age: 25,
-    height: 175
 }
+alert(sum);
 
-console.log(student.hasOwnProperty('name'));
+// var student = {
+//     name: '형준',
+//     age: 25,
+//     height: 175
+// }
+
+// console.log(student.hasOwnProperty('name'));
