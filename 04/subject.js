@@ -133,32 +133,48 @@ const pageSize = 2;
 // quiz
 // pageSize에 따라 배열값 분리해서 출력
 // pageSize=2 일때는 맨끝에 --- 없어야함
-const newArr = [];
-for(let i = 0; i < items1.length - 1; i++){
+var newArr = [];
+for(let i = 0; i < items1.length; i++){
     var temp = items1[i];
+    if(i == items1.length - 1 || i == 0){
+        newArr.push(temp);
+    }else{
+        if((i + 1) % pageSize == 0){
+            temp = items1[i] + '---' + items1[i + 1];
+        }else if((i + 1) % pageSize == 1){
+            continue;
+        }
 
-    if((i + 1) % pageSize === 0 && i !== items1.length){
-        temp = temp + '---' + items1[i + 1];
-    }else if(i !== 0 && (i + 1) % pageSize === 1){
-        continue;
+        newArr.push(temp);
     }
-    newArr.push(temp);
 }
-
-const pad = '---';
-
-const result = [];
-items1.forEach((item, index) => {
-    const isPaegPad = index % pageSize === 0 && index > 0
-    if(isPaegPad){
-        result.push(pad);
-    }
-    result.push(item);
-})
-
 // 출력: a,b,c---d,e,f---g,h,i---j
-console.log(result.join(''));
+console.log(newArr.join());
 
 // ===========
 
 //Q12
+const item2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+const pageSize2 = 3;
+
+// quiz
+// pageSize에 따라 배열값 분리해서 출력
+var newArr = [];
+var tempArr = [];
+for(let i = 0; i < item2.length; i++){
+    if((i + 1) % pageSize2 == 0){
+        tempArr.push(item2[i]);
+        tempArr.join();
+        newArr.push(tempArr.join(','));
+        tempArr = [];
+    }else{
+        tempArr.push(item2[i]);
+    }
+}
+if(tempArr.length != 0 ){
+    tempArr.join();
+    newArr.push(tempArr);
+}
+
+// 출력: [ [a,b,c], [d,e,f], [g,h,i], [j] ]
+console.log(newArr);
