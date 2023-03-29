@@ -178,3 +178,138 @@ if(tempArr.length != 0 ){
 
 // 출력: [ [a,b,c], [d,e,f], [g,h,i], [j] ]
 console.log(newArr);
+
+// ===========
+
+//Q13
+const items13 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+const pageSize13 = 3;
+
+const getStartIndexByPage = function (page) {
+  // quiz
+};
+
+// 출력
+getStartIndexByPage(1); // 0
+getStartIndexByPage(2); // 3
+getStartIndexByPage(3); // 6
+
+// ===========
+
+//Q14
+const phoneNumber = `010-1234-1234`;
+
+// quiz
+// xxx-xxxx-xxxx 패턴찾기
+const regex = /^\d{3}-\d{4}-\d{4}$/;
+
+// 출력: true
+console.log(regex.test(phoneNumber));
+
+// ===========
+
+// Q15
+const user = { nick: "nio", age: 20, location: "제주" };
+
+// quiz
+delete user.location;
+user.nick = 'nio';
+user.age = 21;
+user.name = '부산'; 
+
+// 출력: {nick:'nio', age:21, name:'부산'}
+console.log(user);
+
+// ===========
+
+// Q16
+const text16 = "{a:1, b:2}";
+
+// quiz
+const obj16 = JSON.parse(text16.replace(/'/g, '"').replace(/(\w+):/g, '"$1":'));
+
+// 출력: {a:1 , b:2}
+console.log(obj16);
+
+// ===========
+
+// Q17
+const user17 = { nick: "nio", age: 20, location: "제주" };
+
+// quiz
+
+// 출력: string "{ nick: 'nio', age: 20, location: '제주' }"
+let str = "{ ";
+for (const key in user) {
+  str += `${key}: '${user[key]}', `;
+}
+str = str.slice(0, -2) + " }";
+
+const newStr = `"${str}"`
+console.log(newStr);
+
+// ===========
+
+// Q18
+const items18 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// quiz
+const newArr18 = [];
+for(let i = 0; i < items18.length; i++){
+    if(items18[i] % 2 === 0){
+        newArr18.push(items18[i]);
+    }
+}
+
+// 출력: 짝수만 [2,4,6,8,10]
+console.log(newArr18);
+
+// ===========
+
+
+// Q19
+const list = [
+    {
+      id: 1,
+      title: "JS",
+      isPublic: true,
+    },
+    {
+      id: 2,
+      title: "기본",
+      isPublic: true,
+    },
+    {
+      id: 3,
+      title: "ecma",
+      isPublic: true,
+    },
+    {
+      id: 4,
+      title: "dom",
+      isPublic: false,
+    },
+  ];
+  
+  // quiz
+  let newArr19 = [];
+  for(let i = 0; i < list.length; i++){
+    if(list[i].isPublic === true){
+         newArr19.push(list[i].title);
+    }
+  }
+  
+  // 출력: ['JS','기본','ecma']  isPublic=true 의  title만 뽑기
+  console.log(newArr19);
+
+// ===========
+
+// Q20
+const dday = "2022-02-18";
+
+// quiz
+const nextDay = new Date(dday);
+nextDay.setDate(nextDay.getDate() + 1);
+const formattedNextDay = nextDay.toISOString().slice(0,10);
+
+// 출력: '2022-02-03'
+console.log(formattedNextDay);
