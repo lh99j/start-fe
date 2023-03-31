@@ -187,6 +187,7 @@ const pageSize13 = 3;
 
 const getStartIndexByPage = function (page) {
   // quiz
+  return (page - 1) * pageSize13;
 };
 
 // 출력
