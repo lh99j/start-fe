@@ -13,51 +13,49 @@ var $wrap = document.getElementById('wrap');
 var $middleTx = document.querySelector('#middleTx');
 var $leftBtn = document.querySelector('#left');
 var $rightBtn = document.querySelector('#right');
-var currentPageValue = 1
-var totalPageSize = Math.floor(todayPhoto.length / 3) + 1;
+var currentPageValue = 1;
+var listSize = 3;
+var totalPageSize = Math.ceil(todayPhoto.length / listSize);
 
-
-function showImage(currentPage){
-    var str = '';
-    var pageSize = currentPage * 3
-
-    if(pageSize - 3 < todayPhoto.length){
-        str += `<div style = "flex:0; margin-right:40px;"><div><img src="${todayPhoto[pageSize - 3].img}" style = "width:200px"></div> <div>${todayPhoto[pageSize - 3].title}</div></div>`;
-    }
-    if(pageSize - 2 < todayPhoto.length){
-        str += `<div style = "flex:0; margin-right:40px;"><div><img src="${todayPhoto[pageSize - 2].img}" style = "width:200px"></div> <div>${todayPhoto[pageSize - 2].title}</div></div>`;
-    }
-    if(pageSize - 1 < todayPhoto.length){
-        str += `<div style = "flex:0; margin-right:40px;"><div><img src="${todayPhoto[pageSize - 1].img}" style = "width:200px"></div> <div>${todayPhoto[pageSize - 1].title}</div></div>`;
-    }   
-    
-    $wrap.innerHTML = str;
+function printItem(item) {
+    $wrap.innerHTML = item;
     $wrap.style.display = "flex";
-}
+  }
+
+function printPage(page) {
+    const startIndex = (page - 1) * listSize;
+    var str = ""
+
+    for (let i = startIndex; i < startIndex + listSize; i++) {
+        if(i < todayPhoto.length){
+             str += `<div style = "flex:0; margin-right:40px;"><div><img src="${todayPhoto[i].img}" style = "width:200px"></div> <div>${todayPhoto[i].title}</div></div>`;
+    }
+    }
+    printItem(str);
+  }
 
 
 function setCurrentTx(currentPage){
     $middleTx.innerHTML = `${currentPage} / ${totalPageSize}`;    
 }
 
-
 $leftBtn.addEventListener('click', function(){
     if(currentPageValue !== 1){
         currentPageValue--
-        showImage(currentPageValue);
+        printPage(currentPageValue);
         setCurrentTx(currentPageValue);
     }
     
 })
 
 $rightBtn.addEventListener('click', function(){
-    if(currentPageValue !== 3){
+    if(currentPageValue !== totalPageSize){
         currentPageValue++
-        showImage(currentPageValue);
+        printPage(currentPageValue);
         setCurrentTx(currentPageValue);
     }
 })
 
 setCurrentTx(currentPageValue);
-showImage(currentPageValue);
+printPage(currentPageValue);
 
