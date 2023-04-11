@@ -2,8 +2,17 @@ const $btn = document.querySelector('#btn');
 const $num = document.querySelector('#num')
 const $result = document.querySelector('#result');
 
+function isValidNum(num){
+    if(!!Number(num) && num % 1 === 0){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
 function print99Dan(){
-    if(!!Number($num.value)){
+    if(isValidNum($num.value)){
         let str = "";
         for(let i = 1; i < 10; i++){
             str += `<div>${$num.value} x ${i} = ${$num.value * i}`;
