@@ -2,20 +2,25 @@ const $point = document.querySelector('#point');
 const $life = document.querySelector('#life');
 const $bug = document.querySelector('#bug');
 const $box = document.querySelector('.box');
-//bug는 (0, 0) ~ (380, 380).
+//bug는 (0, 0) ~ (380, 380)
 
 let isClick = false;
 let point = 0;
 let life = 10;
 let stop = 0;
 
+let width = $box.offsetWidth - $bug.offsetWidth;
+let height = $box.offsetWidth - $bug.offsetWidth;
+let limit = { limitX : width, limitY : height};
+
 let x = 0;
 let y = 0;
 
-function setBugClicked(){
+function setBugClicked(event){
     $bug.style.display = "none";
     point++;
     $point.innerHTML = point;
+    event.stopPropagation();
 }
 
 function gameOver(){
@@ -32,8 +37,8 @@ function setLifeDown(){
 }
 
 function setBugLocation(){
-    x = Math.floor(Math.random() * 380);
-    y = Math.floor(Math.random() * 380);
+    x = Math.floor(Math.random() * limit.limitX);
+    y = Math.floor(Math.random() * limit.limitY);
 }
 
 function setAutoBugCreate(){
@@ -43,15 +48,14 @@ function setAutoBugCreate(){
     $bug.style.display = "block";
 }
 
-function gameStart(){
-    stop = setInterval(setAutoBugCreate, 2000);
+function setEventListener(){
+    $bug.addEventListener('click', setBugClicked);
+    $box.addEventListener('click', setLifeDown);   
 }
 
-$bug.addEventListener('click', setBugClicked);
-$box.addEventListener('click', setLifeDown);
+function gameStart(){
+    stop = setInterval(setAutoBugCreate, 1000);
+    setEventListener();
+}
 
 gameStart();
-
-
-// $bug.style.top = "380px";
-// $bug.style.left = "380px";
