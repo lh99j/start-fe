@@ -11,4 +11,4 @@ const doingProgress = () => {
     $progres.style.width = `${progressPercent}%`;
 };
 
-setInterval(doingProgress, 1000);
+setInterval(doingProgress, 500);
