@@ -1,14 +1,19 @@
 const $progres = document.querySelector('#progress');
 
 let progressPercent = 0;
-let unit = 11;
+let value = 1;
 
-const doingProgress = () => {
-    if(progressPercent > 100 || progressPercent < 0){
-        unit = -unit;
+const moveProgress = () => {
+    if(progressPercent >= 100){
+        progressPercent = 100;
+        value = -value;
+    }else if(progressPercent <= 0){
+        progressPercent = 0;
+        value = -value;
     }
-    progressPercent += unit;
+
+    progressPercent += value;
     $progres.style.width = `${progressPercent}%`;
 };
 
-setInterval(doingProgress, 500);
+setInterval(moveProgress, 20);
