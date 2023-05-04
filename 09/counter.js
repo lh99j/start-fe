@@ -8,13 +8,13 @@ function setText(dom, text){
     dom.innerText = text;
 }
 
-function updateCountUp(){
-    setText($count, ++count);
+function setText(dom, text) {
+    dom.innerText = text;
 }
 
-function updateCountDown(){
-    setText($count, --count);
+function updateCount(amount) {
+    setText($count, count += amount);
 }
 
-$plus.addEventListener('click', updateCountUp);
-$minus.addEventListener('click', updateCountDown);
+$plus.addEventListener('click', () => updateCount(1));
+$minus.addEventListener('click', () => updateCount(-1));
