@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "12.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node 12.mjs",
+    "json-server": "json-server --watch db.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "jquery": "^3.7.0",
+    "json-server": "^0.17.3",
+    "playwright": "^1.33.0",
+    "pretty-bytes": "^6.1.0"
+  }
+}
