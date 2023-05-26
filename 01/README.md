@@ -7,3 +7,4 @@
 
 1. serve를 Global로 설치 `npm i -g serve`
 2. `serve .` 명령어 실행
+3. `https://localhost:3000` 접속
